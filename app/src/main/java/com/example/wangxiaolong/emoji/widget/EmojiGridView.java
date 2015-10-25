@@ -1,4 +1,4 @@
-package com.example.wangxiaolong.emoji.widget;
+package com.meizu.flyme.flymebbs.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,10 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
-
-import com.example.wangxiaolong.emoji.R;
-import com.example.wangxiaolong.emoji.interfaces.OnInsertEmojiListener;
-
+import com.meizu.flyme.flymebbs.R;
+import com.meizu.flyme.flymebbs.interfaces.OnInsertEmojiListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
@@ -25,21 +23,11 @@ import java.util.HashMap;
  * Description: 表情板控件类
  */
 public class EmojiGridView extends GridView implements AdapterView.OnItemClickListener{
-    private int[] emotions = {R.drawable.biggrin, R.drawable.call, R.drawable.cry, R.drawable.curse, R.drawable.dizzy,
-            R.drawable.funk, R.drawable.handshake, R.drawable.huffy, R.drawable.hug, R.drawable.kiss, R.drawable.lol,
-            R.drawable.loveliness, R.drawable.mad, R.drawable.sad, R.drawable.shocked, R.drawable.shutup, R.drawable.shy,
-            R.drawable.sleepy, R.drawable.smile, R.drawable.sweat, R.drawable.time, R.drawable.titter, R.drawable.tongue,
-            R.drawable.victory
-    };
-    private String[] emotion_escapes = {":D", ":call:", ":'(", ":curse:", ":dizzy:",
-            ":funk:", ":handshake", ":@", ":hug:", ":kiss:",
-            ":loveliness:", ":Q", ":(", ":o", ":shutup:",
-            ":sleepy:", ":)", ":L", ":time:", ";P",
-            " :victory:"
-    };
+
     Context mContext;
     SimpleAdapter mAdapter;
     OnInsertEmojiListener mOnInsertEmojiListener;
+
     public EmojiGridView(Context context) {
         super(context);
         init(context);
@@ -63,11 +51,11 @@ public class EmojiGridView extends GridView implements AdapterView.OnItemClickLi
      */
     public void init(Context context){
         mContext =context;
-        ArrayList<HashMap<String, Object>> listImageItem = new ArrayList<HashMap<String, Object>>();
-        for (int i = 0; i < emotion_escapes.length; i++) {
-            HashMap<String, Object> map = new HashMap<String, Object>();
-            map.put("ItemImage", emotions[i]);
-            map.put("ItemEscape", emotion_escapes[i]);
+        ArrayList<HashMap<String, Object>> listImageItem = new ArrayList<>();
+        for (int i = 0; i < EmojiconHandler.emotion_escapes.length; i++) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("ItemImage", EmojiconHandler.emo_news[i]);
+            map.put("ItemEscape", EmojiconHandler.emo_news_escapes[i]);
             listImageItem.add(map);
         }
         mAdapter = new SimpleAdapter(mContext,
